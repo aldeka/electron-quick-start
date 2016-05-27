@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <script>
+    const shell = require('electron').shell;
+    var openFile = function (path) {
+        console.log('clicked button');
+        shell.openItem(path);
+    };
+    </script>
   </head>
   <body>
     <h1>Hello World!</h1>
@@ -10,10 +17,9 @@
     We are using node <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
 
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+    <button onClick="openFile('/Users/karenr/Desktop/electron-quick-start/test-files/logo.png')">Open file with explicit full path</button>
+    <button onClick="openFile('~/Desktop/electron-quick-start/test-files/logo.png')">Open file with ~ path</button>
+    <button onClick="openFile('./test-files/logo.png')">Open file with relative path</button>
+  </body>
 </html>
